@@ -2,10 +2,7 @@ package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class MemoryMemberRepository implements MemberRepository{
 
@@ -13,8 +10,8 @@ public class MemoryMemberRepository implements MemberRepository{
     private static long sequence = 0L;
 
     @Override
-    public Meber save(Member member) {
-        memver.setId(++sequence);
+    public Member save(Member member) {
+        member.setId(++sequence);
         store.put(member.getId(), member);
         return member;
     }
@@ -34,5 +31,9 @@ public class MemoryMemberRepository implements MemberRepository{
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore(){
+        store.clear();
     }
 }
