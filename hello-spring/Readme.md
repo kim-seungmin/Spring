@@ -119,3 +119,86 @@
 >  ```
 >  hello-api?name=spring 입력시 json 형식으로 출력   
 >  {"name":"spring"}   
+
+# 백엔드 개발   
+>    
+> ## 컨트롤러, 서비스, 리포지토리   
+> 컨트롤러: 웹 MVC의 컨트롤러 역할   
+> 서비스: 핵심 비즈니스 로직 구현   
+> 리포지토리: DB접근, 저장, 관리   
+>
+> [5번커밋](https://github.com/kim-seungmin/Spring/commit/ebd26a22ccf73b2a0b10582698ae2164ad34f9ee,"이동")   
+> 로그인 제작시 DB가 확정되지 않아 interface를 통해 테스트   
+> ## Optional 
+> ```
+> Optional<Member> findById(Long id);
+>  ```
+> null리턴시 optional을 감싸서 반환
+> ```
+>  memberRepository.findByName(member.getName())
+>                .ifPresent(m -> {
+>                    throw new IllegalStateException("이미 존재하는 회원 입니다");
+>                });
+>  ```
+>  
+>
+> [6번커밋](https://github.com/kim-seungmin/Spring/commit/7ec3adb80a143b02b26b6b8ac5e401022ae8d4a5,"이동")
+> ## Junit
+> @test를 통해 선언 함수 부분만 실행 가능, 순서가 보장안됨 어느 함수가 먼져 실행될지 알수없음
+>```
+> @Test
+>    public void save(){
+>        Member member = new Member();
+>        member.setName("spring");
+>
+>        repository.save(member);
+>
+>        Member result = repository.findById(member.getId()).get();
+>        assertThat(member).isEqualTo(result);
+>    }
+>```
+>
+> ## Asertion
+> junit   
+> ```
+> Assertions.assertEquals(member, result)
+> ```
+> assertj   
+> ```
+> assertThat(member).isEqualTo(result);
+> ```
+> 두 값이 다르면 오류 출력, 같으면 출력없음
+>  
+> ## AfterEach
+> ```
+>     @AfterEach
+>    public void afterEach(){
+>        repository.clearStore();
+>    }  
+> ```
+> @Test가 종료될떄마다 실행  
+>
+> [6번커밋](https://github.com/kim-seungmin/Spring/commit/1ab25a4d806452ef0e8cef774eb170ad4285d860,"이동")   
+>  ## 함수명 정하기
+> 서비스 -> 비즈니스(join) ,리포지토리 -> 기계적(addMember)
+>
+>[7번커밋](https://github.com/kim-seungmin/Spring/commit/979a703d0a8e4047fc379e39bf51b71955092e9b,"이동") 
+> ## given,when,then 주석   
+> ```
+>   //given
+>   Member member = new Member();
+>   member.setName("hello");
+>   //when
+>   Long saveId = memberService.join(member);
+>   //then
+>   Member findMember = memberService.findOne(saveId).get();
+>   assertThat(member.getName()).isEqualTo(findMember.getName());
+> ```
+> given 값 지정 when 예외 발생 시점 then 예외검사
+>  
+  
+단축키   
+컨트롤+쉬프트+엔터 문장(if, for등)자동완성
+쉬프트+윈도우+V 자동으로 리턴값을 만들어줌   
+컨트롤+윈도우+쉬프트+T Refactor This
+컨트롤+쉬프트+T TEST자동생성
