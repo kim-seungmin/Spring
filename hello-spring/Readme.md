@@ -83,7 +83,7 @@
 >  ```
 >  hello-mvc?name=spring   
 >  hello-mvc 접속 -> name의 값을 파라미터로 받아옴(spring) -> name에 spring저장 -> hello-template호출 -> hello spring 출력   
->  웹브라우져에서 오픈시 '<p>hello spring</p>' 출력됨, th값을 숨길수있음   
+>  웹브라우져에서 오픈시 ```<p>hello spring</p>``` 출력됨, th값을 숨길수있음   
 >
 >  ## api
 >  [4번 커밋](https://github.com/kim-seungmin/Spring/commit/728a712ed53d85efeba702a54855df8dac1a29bf, "이동")   
