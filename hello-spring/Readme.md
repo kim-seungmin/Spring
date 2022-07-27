@@ -178,11 +178,11 @@
 > ```
 > @Test가 종료될떄마다 실행  
 >
-> [6번커밋](https://github.com/kim-seungmin/Spring/commit/1ab25a4d806452ef0e8cef774eb170ad4285d860,"이동")   
+> [7번커밋](https://github.com/kim-seungmin/Spring/commit/1ab25a4d806452ef0e8cef774eb170ad4285d860,"이동")   
 >  ## 함수명 정하기
 > 서비스 -> 비즈니스(join) ,리포지토리 -> 기계적(addMember)
 >
->[7번커밋](https://github.com/kim-seungmin/Spring/commit/979a703d0a8e4047fc379e39bf51b71955092e9b,"이동") 
+> [8번커밋](https://github.com/kim-seungmin/Spring/commit/979a703d0a8e4047fc379e39bf51b71955092e9b,"이동") 
 > ## given,when,then 주석   
 > ```
 >   //given
@@ -197,6 +197,37 @@
 > given 값 지정 when 예외 발생 시점 then 예외검사
 >  
   
+# 스프링 빈과 의존관계
+> [9번커밋](https://github.com/kim-seungmin/Spring/commit/cbcd5270573b9d0a0908d0e942fae8597705fdf4,"이동")
+> ## @Service
+> 스프링 컨테이너에 등록
+> ## @Controller
+> 컨트롤러 어노테이션 등록시 스프링이 객체 생성후 들고있음 -> 스프링 빈이 관리된다고 표현      
+> ## @Autowired   
+> 스프링 컨테이너에서 가져와 연결시켜줌 -> 여러개가 아니라 하나만 만들어 사용할수 있음   
+> 기존방식 (컨테이너마다 새로 생성됨)
+> ```
+> MemberService memberService = new MemberService;
+> ```
+> Autowired (스프링 빈에 등록되어 있는 객체를 가져와 사용, 의존관계 주입)
+> ```
+> @Autowired
+>    public MemberController(MemberService memberService) {
+>        this.memberService = memberService;
+>    }
+>```
+> ## @Repository
+> 리포지토리로 등록 @Autowired로 가져와 사용
+>
+>|컴포넌트 스캔과 자동 의존관계 설정|자바 코드로 직접 스프링 빈 등록하기|
+>|:---:|:---:|
+>|@Service,@Controller,@Autowired|@Configuration, @Bean|
+>| [9번커밋](https://github.com/kim-seungmin/Spring/commit/cbcd5270573b9d0a0908d0e942fae8597705fdf4,"이동") | [10번커밋](https://github.com/kim-seungmin/Spring/commit/b06a49f42d1c467b02f8519ea14ab87365d1944f,"이동") |   
+>
+> 의존관계가 실행중 동적으로 변하는 경우는 거의 없으므로 생성자 주입을 권장함   
+> 실무에서는 주로 정형화된 컨트롤러, 서비스, 리포지토리 같은 코드는 컴포넌트 스캔을 사용한다. 정형화 되지 않거나 상황에 따라 구현클래스를 변경해야 하면 설정을 통해 스프링 빈으로 등록
+
+
 단축키   
 컨트롤+쉬프트+엔터 문장(if, for등)자동완성
 쉬프트+윈도우+V 자동으로 리턴값을 만들어줌   
