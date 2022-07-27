@@ -226,8 +226,38 @@
 >
 > 의존관계가 실행중 동적으로 변하는 경우는 거의 없으므로 생성자 주입을 권장함   
 > 실무에서는 주로 정형화된 컨트롤러, 서비스, 리포지토리 같은 코드는 컴포넌트 스캔을 사용한다. 정형화 되지 않거나 상황에 따라 구현클래스를 변경해야 하면 설정을 통해 스프링 빈으로 등록
-
-
+# 웹MVC 개발   
+> [11번커밋](https://github.com/kim-seungmin/Spring/commit/11a385ee86e7e15cd29063787e3c52f8ac85134f,"이동")   
+> 메인페이지등록   
+> ```
+> @GetMapping("/")
+> ```
+> [12번커밋](https://github.com/kim-seungmin/Spring/commit/eeb0b2d87e1883ab56f4c4ec83d21e438c787a88,"이동")   
+> 포스트 처리   
+> ```  
+>     @PostMapping("/members/new")
+>    public String create(MemberForm form){
+>        Member member = new Member();
+>        member.setName(form.getName());
+>
+>        System.out.println("member = " + member.getName());
+>        memberService.join(member);
+>
+>        return "redirect:/";
+>    }
+> ```
+> [13번커밋](https://github.com/kim-seungmin/Spring/commit/1b8571e444d79b1828198ecf87a11c2ab1605102,"이동")   
+> thymeleaf   
+> ```
+> <html xmlns:th="http://www.thymeleaf.org">   
+> ~~~
+>   <tr th:each="member : ${members}">
+>     <td th:text="${member.id}"></td>
+>     <td th:text="${member.name}"></td>  
+> ```
+> each="member : ${members}" forEach문과 동일 members리스트의 내부 객체를 member로 가져옴   
+> .id, .name getId, getName으로 가져옴   
+  
 단축키   
 컨트롤+쉬프트+엔터 문장(if, for등)자동완성
 쉬프트+윈도우+V 자동으로 리턴값을 만들어줌   
