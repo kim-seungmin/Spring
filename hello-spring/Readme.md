@@ -257,9 +257,90 @@
 > ```
 > each="member : ${members}" forEach문과 동일 members리스트의 내부 객체를 member로 가져옴   
 > .id, .name getId, getName으로 가져옴   
+# 스프링 DB 접근 기술
+> ## 순수 JDBC
+> [14번커밋](https://github.com/kim-seungmin/Spring/commit/795bbd8cd8ae2614a98eb01e5b296d80b7f6cc75,"이동")  
+> build.gradle 파일에 jdbc, h2 데이터 베이스 관련 라이브러리 추가
+> ```
+> implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+>	runtimeOnly 'com.h2database:h2'
+>```  
+> 그래들 아이콘(코끼리)클릭하여 라이브러리 설치   
+>  
+> hello-spring/src/main/resources/application.properties
+> ```  
+> spring.datasource.url=jdbc:h2:tcp://localhost/~/test
+> spring.datasource.driver-class-name=org.h2.Driver
+> spring.datasource.username=sa
+> ```  
+>  
+> SpringConfig.java
+> ```
+> private DataSource dataSource;
+>
+>   @Autowired
+>   public SpringConfig(DataSource dataSource){
+>       this.dataSource = dataSource;
+>   }
+>  
+>  ~~~~~
+>
+>  @Bean
+>    public MemberRepository memberRepository(){
+>        // return new MemoryMemberRepository();
+>        return new JdbcMemberRepository(dataSource);
+>    }
+> ```  
+> 스프링으로부터 dataSource를 받아옴, 메모리 리포지토리에서 jdbc리포지토리로 변경
+> 
+> JdbcMemberRepository.java
+> ```
+> public class JdbcMemberRepository implements MemberRepository {
+>    private final DataSource dataSource;
+>    public JdbcMemberRepository(DataSource dataSource) {
+>        this.dataSource = dataSource;
+>    }
+>  ~~~~~~~
+>   try {
+>            conn = getConnection();
+>            pstmt = conn.prepareStatement(sql,
+>                    Statement.RETURN_GENERATED_KEYS);
+>            pstmt.setString(1, member.getName());
+>            pstmt.executeUpdate();
+> ```  
+> [15번커밋](https://github.com/kim-seungmin/Spring/commit/8079e298eae0ea96c71a8c658cfd0112f70c4617,"이동")  
+> ## @SpringBootTest 
+> 스프링 컨테이너와 테스트를 함께 실행
+> ## @Transactional  
+> 데이터베이스에 커밋하지않음 -> sql문 실행후 롤백
+> [16번커밋](https://github.com/kim-seungmin/Spring/commit/be58116fe3f8e8ee85525f6d1829eb27783e306b,"이동")  
+> ## JDBC Template
+> db사용을 간편하게 바꿔 sql문 만으로 작동하게 해줌 
+> ```
+> @Autowired
+>    public JdbcTemplateMemberRepositorty(DataSource dataSource){
+>        jdbcTemplate = new JdbcTemplate(dataSource);
+>    }
+> ~~~~~~
+>   return jdbcTemplate.query("select * from member", memberRowMapper());
+> ```
+> [17번커밋](https://github.com/kim-seungmin/Spring/commit/c0d3e0875090c10c8c839c89029ad8bd7a372f5c,"이동")
+> #JPA
+>  쿼리문까지 자동으로 처리해줌, @Transactional 와 @Commit을 필요로함
+> ```
+> em.persist(member);
+> ~~~~~~~~
+> return em.createQuery("select m from Member m", Member.class).getResultList();  
+> ``` 
+> 
+> ## 스프링 데이터 JPA
+> [18번커밋](https://github.com/kim-seungmin/Spring/commit/764da18dd63e7a6d94ee715b96b1f8569f969c99,"이동")  
+> 인터페이스를 통해 간단한 CRUD를 지원 복잡한 동적 쿼리는 Quertdsl이라는 라이브러리 사용, 그래도 어려운 쿼리는 JPA가 제공하는 네이티브 쿼리 사용
+  
   
 단축키   
 컨트롤+쉬프트+엔터 문장(if, for등)자동완성
 쉬프트+윈도우+V 자동으로 리턴값을 만들어줌   
 컨트롤+윈도우+쉬프트+T Refactor This
 컨트롤+쉬프트+T TEST자동생성
+쉬프트+F10 이전 실행 
