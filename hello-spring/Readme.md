@@ -336,8 +336,34 @@
 > ## 스프링 데이터 JPA
 > [18번커밋](https://github.com/kim-seungmin/Spring/commit/764da18dd63e7a6d94ee715b96b1f8569f969c99,"이동")  
 > 인터페이스를 통해 간단한 CRUD를 지원 복잡한 동적 쿼리는 Quertdsl이라는 라이브러리 사용, 그래도 어려운 쿼리는 JPA가 제공하는 네이티브 쿼리 사용
-  
-  
+# AOP
+> [20번커밋](https://github.com/kim-seungmin/Spring/commit/b145ff668566eb847ba0bc28a64be76501864b9c,"이동")  
+> 실행 될때마다 앞뒤로 실행이 필요한 경우 사용(예. 실행 시간 측정)
+> ```
+> @Aspect
+> @Component
+> public class TimeTraceAop {
+>    @Around("execution(* hello.hellospring..*(..))")
+>    public Object execute(ProceedingJoinPoint joinPoint) throws Throwable{
+>        long start = System.currentTimeMillis();
+>        System.out.println("Start"+joinPoint.toString());
+>        try{
+>            return joinPoint.proceed();
+>        } finally{
+>            long finish = System.currentTimeMillis();
+>            long timeMs=finish-start;
+>            System.out.println("END: " + joinPoint.toString() + " " + timeMs + "ms");
+>        }
+>    }
+>}
+> ```  
+> @Aspect -> AOP로 선언  
+> joinPoint.toString() -> 메서드명  
+> joinPoint.proceed(); -> 콜한 메서드 실행
+> @Around("execution(* hello.hellospring..*(..))")  -> 실행할 패키지 지정
+
+
+
 단축키   
 컨트롤+쉬프트+엔터 문장(if, for등)자동완성
 쉬프트+윈도우+V 자동으로 리턴값을 만들어줌   
