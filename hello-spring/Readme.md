@@ -23,7 +23,7 @@
 >  spring-test 스프링 통합 테스트 지원   
 >
 >  ## thymelaf
->  [2번 커밋](https://github.com/kim-seungmin/Spring/commit/30c313c6eca925cdc0cc19d35aab858b7c17d8bb, "이동")   
+>  [2번 커밋](https://github.com/kim-seungmin/Spring/commit/30c313c6eca925cdc0cc19d35aab858b7c17d8bb)   
 >  HelloController.java
 >  ```
 >  @Controller
@@ -63,7 +63,7 @@
 >  html파일등 그대로 서버에서 클라이언트로 전송   
 >  
 >  ## mvc
->  [3번 커밋](https://github.com/kim-seungmin/Spring/commit/d7515eb24245f674edb1afde35bc707b0a71d096, "이동")   
+>  [3번 커밋](https://github.com/kim-seungmin/Spring/commit/d7515eb24245f674edb1afde35bc707b0a71d096)   
 >  모델 뷰 컨트롤 분리
 >  HelloController.java
 >  ```
@@ -86,7 +86,7 @@
 >  웹브라우져에서 오픈시 ```<p>hello spring</p>``` 출력됨, th값을 숨길수있음   
 >
 >  ## api
->  [4번 커밋](https://github.com/kim-seungmin/Spring/commit/728a712ed53d85efeba702a54855df8dac1a29bf, "이동")   
+>  [4번 커밋](https://github.com/kim-seungmin/Spring/commit/728a712ed53d85efeba702a54855df8dac1a29bf)   
 >  ```
 >  @GetMapping("hello-string")
 >     @ResponseBody
@@ -127,7 +127,7 @@
 > 서비스: 핵심 비즈니스 로직 구현   
 > 리포지토리: DB접근, 저장, 관리   
 >
-> [5번커밋](https://github.com/kim-seungmin/Spring/commit/ebd26a22ccf73b2a0b10582698ae2164ad34f9ee,"이동")   
+> [5번커밋](https://github.com/kim-seungmin/Spring/commit/ebd26a22ccf73b2a0b10582698ae2164ad34f9ee)   
 > 로그인 제작시 DB가 확정되지 않아 interface를 통해 테스트   
 > ## Optional 
 > ```
@@ -142,7 +142,7 @@
 >  ```
 >  
 >
-> [6번커밋](https://github.com/kim-seungmin/Spring/commit/7ec3adb80a143b02b26b6b8ac5e401022ae8d4a5,"이동")
+> [6번커밋](https://github.com/kim-seungmin/Spring/commit/7ec3adb80a143b02b26b6b8ac5e401022ae8d4a5)
 > ## Junit
 > @test를 통해 선언 함수 부분만 실행 가능, 순서가 보장안됨 어느 함수가 먼져 실행될지 알수없음
 >```
@@ -178,11 +178,11 @@
 > ```
 > @Test가 종료될떄마다 실행  
 >
-> [7번커밋](https://github.com/kim-seungmin/Spring/commit/1ab25a4d806452ef0e8cef774eb170ad4285d860,"이동")   
+> [7번커밋](https://github.com/kim-seungmin/Spring/commit/1ab25a4d806452ef0e8cef774eb170ad4285d860)   
 >  ## 함수명 정하기
 > 서비스 -> 비즈니스(join) ,리포지토리 -> 기계적(addMember)
 >
-> [8번커밋](https://github.com/kim-seungmin/Spring/commit/979a703d0a8e4047fc379e39bf51b71955092e9b,"이동") 
+> [8번커밋](https://github.com/kim-seungmin/Spring/commit/979a703d0a8e4047fc379e39bf51b71955092e9b) 
 > ## given,when,then 주석   
 > ```
 >   //given
@@ -198,7 +198,7 @@
 >  
   
 # 스프링 빈과 의존관계
-> [9번커밋](https://github.com/kim-seungmin/Spring/commit/cbcd5270573b9d0a0908d0e942fae8597705fdf4,"이동")
+> [9번커밋](https://github.com/kim-seungmin/Spring/commit/cbcd5270573b9d0a0908d0e942fae8597705fdf4)
 > ## @Service
 > 스프링 컨테이너에 등록
 > ## @Controller
@@ -222,17 +222,17 @@
 >|컴포넌트 스캔과 자동 의존관계 설정|자바 코드로 직접 스프링 빈 등록하기|
 >|:---:|:---:|
 >|@Service,@Controller,@Autowired|@Configuration, @Bean|
->| [9번커밋](https://github.com/kim-seungmin/Spring/commit/cbcd5270573b9d0a0908d0e942fae8597705fdf4,"이동") | [10번커밋](https://github.com/kim-seungmin/Spring/commit/b06a49f42d1c467b02f8519ea14ab87365d1944f,"이동") |   
+>| [9번커밋](https://github.com/kim-seungmin/Spring/commit/cbcd5270573b9d0a0908d0e942fae8597705fdf4) | [10번커밋](https://github.com/kim-seungmin/Spring/commit/b06a49f42d1c467b02f8519ea14ab87365d1944f) |   
 >
 > 의존관계가 실행중 동적으로 변하는 경우는 거의 없으므로 생성자 주입을 권장함   
 > 실무에서는 주로 정형화된 컨트롤러, 서비스, 리포지토리 같은 코드는 컴포넌트 스캔을 사용한다. 정형화 되지 않거나 상황에 따라 구현클래스를 변경해야 하면 설정을 통해 스프링 빈으로 등록
 # 웹MVC 개발   
-> [11번커밋](https://github.com/kim-seungmin/Spring/commit/11a385ee86e7e15cd29063787e3c52f8ac85134f,"이동")   
+> [11번커밋](https://github.com/kim-seungmin/Spring/commit/11a385ee86e7e15cd29063787e3c52f8ac85134f)   
 > 메인페이지등록   
 > ```
 > @GetMapping("/")
 > ```
-> [12번커밋](https://github.com/kim-seungmin/Spring/commit/eeb0b2d87e1883ab56f4c4ec83d21e438c787a88,"이동")   
+> [12번커밋](https://github.com/kim-seungmin/Spring/commit/eeb0b2d87e1883ab56f4c4ec83d21e438c787a88)   
 > 포스트 처리   
 > ```  
 >     @PostMapping("/members/new")
@@ -246,7 +246,7 @@
 >        return "redirect:/";
 >    }
 > ```
-> [13번커밋](https://github.com/kim-seungmin/Spring/commit/1b8571e444d79b1828198ecf87a11c2ab1605102,"이동")   
+> [13번커밋](https://github.com/kim-seungmin/Spring/commit/1b8571e444d79b1828198ecf87a11c2ab1605102)   
 > thymeleaf   
 > ```
 > <html xmlns:th="http://www.thymeleaf.org">   
@@ -259,7 +259,7 @@
 > .id, .name getId, getName으로 가져옴   
 # 스프링 DB 접근 기술
 > ## 순수 JDBC
-> [14번커밋](https://github.com/kim-seungmin/Spring/commit/795bbd8cd8ae2614a98eb01e5b296d80b7f6cc75,"이동")  
+> [14번커밋](https://github.com/kim-seungmin/Spring/commit/795bbd8cd8ae2614a98eb01e5b296d80b7f6cc75)  
 > build.gradle 파일에 jdbc, h2 데이터 베이스 관련 라이브러리 추가
 > ```
 > implementation 'org.springframework.boot:spring-boot-starter-jdbc'
@@ -308,12 +308,12 @@
 >            pstmt.setString(1, member.getName());
 >            pstmt.executeUpdate();
 > ```  
-> [15번커밋](https://github.com/kim-seungmin/Spring/commit/8079e298eae0ea96c71a8c658cfd0112f70c4617,"이동")  
+> [15번커밋](https://github.com/kim-seungmin/Spring/commit/8079e298eae0ea96c71a8c658cfd0112f70c4617)  
 > ## @SpringBootTest 
 > 스프링 컨테이너와 테스트를 함께 실행
 > ## @Transactional  
 > 데이터베이스에 커밋하지않음 -> sql문 실행후 롤백
-> [16번커밋](https://github.com/kim-seungmin/Spring/commit/be58116fe3f8e8ee85525f6d1829eb27783e306b,"이동")  
+> [16번커밋](https://github.com/kim-seungmin/Spring/commit/be58116fe3f8e8ee85525f6d1829eb27783e306b)  
 > ## JDBC Template
 > db사용을 간편하게 바꿔 sql문 만으로 작동하게 해줌 
 > ```
@@ -324,7 +324,7 @@
 > ~~~~~~
 >   return jdbcTemplate.query("select * from member", memberRowMapper());
 > ```
-> [17번커밋](https://github.com/kim-seungmin/Spring/commit/c0d3e0875090c10c8c839c89029ad8bd7a372f5c,"이동")
+> [17번커밋](https://github.com/kim-seungmin/Spring/commit/c0d3e0875090c10c8c839c89029ad8bd7a372f5c)
 > #JPA
 >  쿼리문까지 자동으로 처리해줌, @Transactional 와 @Commit을 필요로함
 > ```
@@ -334,10 +334,10 @@
 > ``` 
 > 
 > ## 스프링 데이터 JPA
-> [18번커밋](https://github.com/kim-seungmin/Spring/commit/764da18dd63e7a6d94ee715b96b1f8569f969c99,"이동")  
+> [18번커밋](https://github.com/kim-seungmin/Spring/commit/764da18dd63e7a6d94ee715b96b1f8569f969c99)  
 > 인터페이스를 통해 간단한 CRUD를 지원 복잡한 동적 쿼리는 Quertdsl이라는 라이브러리 사용, 그래도 어려운 쿼리는 JPA가 제공하는 네이티브 쿼리 사용
 # AOP
-> [20번커밋](https://github.com/kim-seungmin/Spring/commit/b145ff668566eb847ba0bc28a64be76501864b9c,"이동")  
+> [20번커밋](https://github.com/kim-seungmin/Spring/commit/b145ff668566eb847ba0bc28a64be76501864b9c)  
 > 실행 될때마다 앞뒤로 실행이 필요한 경우 사용(예. 실행 시간 측정)
 > ```
 > @Aspect
